@@ -7,6 +7,7 @@ import com.yota8.dormitorysystem.bean.Result;
 import com.yota8.dormitorysystem.bean.Student;
 import com.yota8.dormitorysystem.service.FixService;
 import com.yota8.dormitorysystem.service.RoommateInfoService;
+import com.yota8.dormitorysystem.service.StudentInfoService;
 import com.yota8.dormitorysystem.service.StudentPageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +21,21 @@ import java.util.List;
 @Slf4j
 @RestController
 public class StudentPageController {
-
     // 首页
     @Autowired
-    StudentPageService studentPageService;
+    private StudentPageService studentPageService;
 
     // 我的宿舍(室友信息)
     @Autowired
-    RoommateInfoService roommateInfoService;
+    private RoommateInfoService roommateInfoService;
 
     // 报修申请
     @Autowired
-    FixService fixService;
+    private FixService fixService;
 
     // 个人信息修改(有时间就做修改,没时间就直接查询,和第一个合并了)
+    @Autowired
+    private StudentInfoService studentInfoService;
 
 
     // 接收一个id参数,已经进行登录校验后,并且有jwt令牌,直接根据id去查找学生信息
@@ -67,6 +69,12 @@ public class StudentPageController {
     @PostMapping("/StudentFixApplication")
     public Result insertFixApplication(@RequestBody Dorm dorm) {
         return fixService.insertFixApplication(dorm);
+    }
+
+
+    @PostMapping("/StudentInfo")
+    public Result updateStudentInfo(@RequestBody Student student) {
+        return studentInfoService.updateStudentInfo(student);
     }
 
 }

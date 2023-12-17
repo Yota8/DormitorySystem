@@ -18,12 +18,15 @@ public class FixServiceImpl implements FixService {
 
     @Override
     public Result insertFixApplication(Dorm dorm) {
-        int returnColumn = fixMapper.insertFixApplication(dorm.getDormId(), dorm.getDormBuild(), dorm.getDetail());
+        // input框为空时的处理
         if (Objects.equals(dorm.getDetail(), "")) {
             return new Result(0, "FIX_NO_MESSAGE", null);
         }
+
+        int impactColumn = fixMapper.insertFixApplication(dorm.getDormId(), dorm.getDormBuild(), dorm.getDetail());
+
         // 返回结果行数大于等于1 说明插入成功
-        if (returnColumn >= 1) {
+        if (impactColumn >= 1) {
             return new Result(1, "FIX_SUBMITTED", null);
         } else {
             return new Result(0, "FIX_NOT_SUBMITTED", null);
