@@ -14,4 +14,5 @@ public class Staff {
     private String name;        // 姓名
     private String telephone;   // 手机号
     private String sex;         // 性别
+    private String dormBuild;   // 寝室楼
 }

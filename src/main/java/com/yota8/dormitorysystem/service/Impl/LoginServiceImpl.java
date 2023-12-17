@@ -1,6 +1,5 @@
 package com.yota8.dormitorysystem.service.Impl;
 
-import com.yota8.dormitorysystem.bean.Result;
 import com.yota8.dormitorysystem.bean.Staff;
 import com.yota8.dormitorysystem.bean.Student;
 import com.yota8.dormitorysystem.mapper.LoginMapper;
@@ -17,17 +16,19 @@ public class LoginServiceImpl implements LoginService {
     private LoginMapper loginMapper;
 
     @Override
-    public Result studentLogin(Student student) {
-        log.info("登录:{}", student);
-        Student loginingStudent = loginMapper.studentLoginById(student.getId());
-        return loginingStudent != null ? Result.success() : Result.error("用户名或密码错误");
+    public Student studentLogin(Student student) {
+        log.info("登录:{}",student);
+        Student loginingStudent = loginMapper.studentLoginById(student.getId(), student.getPassword());
+        log.info("账号信息:{}",loginingStudent);
+        return loginingStudent;
     }
 
     @Override
-    public Result staffLogin(Staff staff) {
-        log.info("登录:{}", staff);
-        Student loginingStaff = loginMapper.staffLoginById(staff.getId());
-        return loginingStaff != null ? Result.success() : Result.error("用户名或密码错误");
+    public Staff staffLogin(Staff staff) {
+        log.info("登录:{}",staff);
+        Staff loginingStaff = loginMapper.staffLoginById(staff.getId(), staff.getPassword());
+        log.info("账号信息:{}",loginingStaff);
+        return loginingStaff;
     }
 
 }
