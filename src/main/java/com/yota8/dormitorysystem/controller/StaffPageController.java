@@ -1,6 +1,7 @@
 package com.yota8.dormitorysystem.controller;
 
 import com.yota8.dormitorysystem.bean.*;
+import com.yota8.dormitorysystem.service.HandleRepairService;
 import com.yota8.dormitorysystem.service.HandleReturnService;
 import com.yota8.dormitorysystem.service.StaffInfoService;
 import com.yota8.dormitorysystem.service.StaffPageService;
@@ -20,6 +21,9 @@ public class StaffPageController {
 
     @Autowired
     private HandleReturnService handleReturnService;
+
+    @Autowired
+    private HandleRepairService handleRepairService;
 
     @Autowired
     private StaffInfoService staffInfoService;
@@ -46,8 +50,8 @@ public class StaffPageController {
 
 
     @PostMapping("/StaffHandleRepair")
-    public Result finishRepair(@RequestBody InfoRequest infoRequest) {
-        return staffInfoService.updateStaffInfo(infoRequest);
+    public Result finishRepair(@RequestBody Id id) {
+        return handleRepairService.finishRepair(id);
     }
 
 
