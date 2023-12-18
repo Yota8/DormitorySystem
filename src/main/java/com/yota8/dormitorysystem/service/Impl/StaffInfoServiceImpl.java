@@ -3,7 +3,6 @@ package com.yota8.dormitorysystem.service.Impl;
 
 import com.yota8.dormitorysystem.bean.InfoRequest;
 import com.yota8.dormitorysystem.bean.Result;
-import com.yota8.dormitorysystem.bean.Staff;
 import com.yota8.dormitorysystem.mapper.StaffInfoMapper;
 import com.yota8.dormitorysystem.service.StaffInfoService;
 import lombok.extern.slf4j.Slf4j;
