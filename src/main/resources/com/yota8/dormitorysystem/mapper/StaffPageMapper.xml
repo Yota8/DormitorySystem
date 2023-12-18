@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yota8.dormitorysystem.mapper.StaffPageMapper">
+    <select id="getPopulationById" resultType="java.lang.Integer">
+        select count(student.id)
+        from student,
+             staff
+        where staff.dormBuild = student.dormBuild
+          and staff.id = #{id};
+
+    </select>
+
+    <select id="getLivePopulationById" resultType="java.lang.Integer">
+        select count(if(student.liveStatus = '1', 1, NULL))
+        from student,
+             staff
+        where staff.dormBuild = student.dormBuild
+          and staff.id = #{id};
+
+    </select>
+
+    <select id="getPiecesById" resultType="java.lang.Integer">
+        select count(repair.detail)
+        from staff,
+             repair
+        where staff.dormBuild = repair.dormBuild
+          and staff.id = #{id};
+    </select>
+
+    <select id="getStaffInfoById" resultType="com.yota8.dormitorysystem.bean.Staff">
+        select * from staff where id = #{id}
+    </select>
+
+
+</mapper>

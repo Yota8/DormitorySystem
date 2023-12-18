@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Staff {
     private String job;         // 职位
-    private Integer id;         // 学号
+    private Long id;         // 学号
     private String password;    // 密码
     private String name;        // 姓名
     private String telephone;   // 手机号

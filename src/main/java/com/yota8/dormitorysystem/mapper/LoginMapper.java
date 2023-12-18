@@ -9,5 +9,5 @@ public interface LoginMapper {
 
     Student studentLoginById(Long id, String password);
 
-    Staff staffLoginById(Integer id, String password);
+    Staff staffLoginById(Long id, String password);
 }

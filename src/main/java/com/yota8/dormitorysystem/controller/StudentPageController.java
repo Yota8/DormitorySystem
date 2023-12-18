@@ -1,10 +1,7 @@
 package com.yota8.dormitorysystem.controller;
 
 
-import com.yota8.dormitorysystem.bean.Dorm;
-import com.yota8.dormitorysystem.bean.Id;
-import com.yota8.dormitorysystem.bean.Result;
-import com.yota8.dormitorysystem.bean.Student;
+import com.yota8.dormitorysystem.bean.*;
 import com.yota8.dormitorysystem.service.FixService;
 import com.yota8.dormitorysystem.service.RoommateInfoService;
 import com.yota8.dormitorysystem.service.StudentInfoService;
@@ -73,8 +70,8 @@ public class StudentPageController {
 
 
     @PostMapping("/StudentInfo")
-    public Result updateStudentInfo(@RequestBody Student student) {
-        return studentInfoService.updateStudentInfo(student);
+    public Result updateStudentInfo(@RequestBody InfoRequest infoRequest) {
+        return studentInfoService.updateStudentInfo(infoRequest);
     }
 
 }
