@@ -10,13 +10,16 @@
             recordTimes = recordTimes + 1
         </set>
         <where>
-            where id = #{id};
+            id in
+            <foreach collection="list" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
         </where>
     </update>
 
 
     <select id="getDormBuildStudents" resultType="com.yota8.dormitorysystem.bean.Student">
-        select * from student
+        select id,name,dormId,liveStatus from student
         <where>
             dormBuild = (select dormBuild from staff where id = #{id})
         </where>

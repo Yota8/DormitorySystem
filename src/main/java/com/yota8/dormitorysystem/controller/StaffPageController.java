@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Slf4j
@@ -46,11 +47,13 @@ public class StaffPageController {
 
 
     @PostMapping("/StaffHandleReturn")
-    public Result handleReturn(@RequestBody ArrayList<Integer> id) {
-        if (id.size() == 1 && 10000 <= id.get(0) && id.get(0) <= 99999) {
-            return handleReturnService.getDormBuildStudents(id.get(0));
+    public Result handleReturn(@RequestBody IdList ids) {
+        // 判断是否为宿管Id
+        if (ids.getId().size() == 1 && 10000 <= ids.getId().get(0) && ids.getId().get(0) <= 99999) {
+            return handleReturnService.getDormBuildStudents(ids.getId().get(0));
         } else {
-            return handleReturnService.insertRecord(id);
+            // 非宿管Id即为要上传的未归学生Id
+            return handleReturnService.insertRecord(ids.getId());
         }
     }
 

@@ -2,11 +2,11 @@ package com.yota8.dormitorysystem.service;
 
 import com.yota8.dormitorysystem.bean.Result;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface HandleReturnService {
 
-    Result getDormBuildStudents(Integer id);
+    Result getDormBuildStudents(Long id);
 
-    Result insertRecord(ArrayList<Integer> id);
+    Result insertRecord(List<Long> id);
 }
