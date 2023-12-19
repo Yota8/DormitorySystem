@@ -23,8 +23,8 @@ public class HandleRepairServiceImpl implements HandleRepairService {
     }
 
     @Override
-    public Result finishRepair(List<Long> id) {
-        int impactColumn = handleRepairMapper.finishRepair(id);
+    public Result finishRepair(List<Long> repairId) {
+        int impactColumn = handleRepairMapper.finishRepair(repairId);
 
         if (impactColumn >= 1) {
             return new Result(1, "REPAIR_HANDLED", null);

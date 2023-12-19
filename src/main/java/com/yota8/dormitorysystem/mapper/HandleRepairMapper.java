@@ -10,5 +10,5 @@ public interface HandleRepairMapper {
 
     List<RepairBean> getRepairInfo(Long id);
 
-    int finishRepair(List<Long> id);
+    int finishRepair(List<Long> repairId);
 }

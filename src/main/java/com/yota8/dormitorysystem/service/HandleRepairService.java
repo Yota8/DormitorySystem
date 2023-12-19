@@ -7,5 +7,5 @@ import java.util.List;
 public interface HandleRepairService {
 
     Result getRepairInfo(Long id);
-    Result finishRepair(List<Long> id);
+    Result finishRepair(List<Long> repairId);
 }
