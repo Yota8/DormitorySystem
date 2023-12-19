@@ -6,8 +6,20 @@
 
     <update id="insertRecord">
         update student
-        set recordTimes = recordTimes + 1
-        where id = #{id};
+        <set>
+            recordTimes = recordTimes + 1
+        </set>
+        <where>
+            where id = #{id};
+        </where>
     </update>
+
+
+    <select id="getDormBuildStudents" resultType="com.yota8.dormitorysystem.bean.Student">
+        select * from student
+        <where>
+            dormBuild = (select dormBuild from staff where id = #{id})
+        </where>
+    </select>
 
 </mapper>

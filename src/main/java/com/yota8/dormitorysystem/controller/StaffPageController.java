@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 
 @Slf4j
 @RestController
@@ -30,8 +32,8 @@ public class StaffPageController {
 
 
     @PostMapping("/StaffMainPage")
-    public StaffResult getStaffInfoById(@RequestBody Id id) {
-        StaffResult studentInfo = staffPageService.getStaffInfoById(id);
+    public Result getStaffInfoById(@RequestBody Id id) {
+        Result studentInfo = staffPageService.getStaffInfoById(id);
         try {
             log.info("staffinfo:" + studentInfo);
             return studentInfo;
@@ -44,8 +46,12 @@ public class StaffPageController {
 
 
     @PostMapping("/StaffHandleReturn")
-    public Result handleReturn(@RequestBody Id id) {
-        return handleReturnService.insertRecord(id);
+    public Result handleReturn(@RequestBody ArrayList<Integer> id) {
+        if (id.size() == 1 && 10000 <= id.get(0) && id.get(0) <= 99999) {
+            return handleReturnService.getDormBuildStudents(id.get(0));
+        } else {
+            return handleReturnService.insertRecord(id);
+        }
     }
 
 

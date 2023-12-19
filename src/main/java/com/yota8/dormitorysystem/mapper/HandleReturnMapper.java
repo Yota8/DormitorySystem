@@ -1,9 +1,15 @@
 package com.yota8.dormitorysystem.mapper;
 
-import com.yota8.dormitorysystem.bean.Id;
+import com.yota8.dormitorysystem.bean.Student;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mapper
 public interface HandleReturnMapper {
-    int insertRecord(Id id);
+
+    List<Student> getDormBuildStudents(Integer id);
+
+    int insertRecord(ArrayList<Integer> id);
 }
