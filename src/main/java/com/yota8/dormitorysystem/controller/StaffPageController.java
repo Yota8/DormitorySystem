@@ -59,8 +59,13 @@ public class StaffPageController {
 
 
     @PostMapping("/StaffHandleRepair")
-    public Result finishRepair(@RequestBody Id id) {
-        return handleRepairService.finishRepair(id);
+    public Result finishRepair(@RequestBody IdList ids) {
+        // 通过获取宿管Id,得到相应楼栋的报修信息
+        if (ids.getId().size() == 1 && ids.getId().get(0) >= 10000){
+            return handleRepairService.getRepairInfo(ids.getId().get(0));
+        } else {
+            return handleRepairService.finishRepair(ids.getId());
+        }
     }
 
 

@@ -1,11 +1,13 @@
 package com.yota8.dormitorysystem.service.Impl;
 
-import com.yota8.dormitorysystem.bean.Id;
+import com.yota8.dormitorysystem.bean.RepairBean;
 import com.yota8.dormitorysystem.bean.Result;
 import com.yota8.dormitorysystem.mapper.HandleRepairMapper;
 import com.yota8.dormitorysystem.service.HandleRepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class HandleRepairServiceImpl implements HandleRepairService {
@@ -13,8 +15,15 @@ public class HandleRepairServiceImpl implements HandleRepairService {
     @Autowired
     HandleRepairMapper handleRepairMapper;
 
+
     @Override
-    public Result finishRepair(Id id) {
+    public Result getRepairInfo(Long id) {
+        List<RepairBean> repairInfo = handleRepairMapper.getRepairInfo(id);
+        return new Result(1,"GET_REPAIRINFO_SUCCESS", repairInfo);
+    }
+
+    @Override
+    public Result finishRepair(List<Long> id) {
         int impactColumn = handleRepairMapper.finishRepair(id);
 
         if (impactColumn >= 1) {

@@ -6,8 +6,20 @@
 
     <update id="finishRepair">
         update repair
-        set complete = 1
-        where repairId = #{id};
+        <set>
+            set complete = 1
+        </set>
+        <where>
+            repairId in
+            <foreach collection="list" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </where>
     </update>
+
+
+    <select id="getRepairInfo" resultType="com.yota8.dormitorysystem.bean.RepairBean">
+        select dormId,detail,complete,repairId from repair where dormBuild = (select dormBuild from staff where id = #{id});
+    </select>
 
 </mapper>
