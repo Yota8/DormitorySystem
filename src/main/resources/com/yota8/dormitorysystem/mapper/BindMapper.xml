@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yota8.dormitorysystem.mapper.BindMapper">
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<!DOCTYPE mapper-->
+<!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
+<!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<!--<mapper namespace="com.yota8.dormitorysystem.mapper.BindMapper">-->
 
-    <update id="doBind" parameterType="com.yota8.dormitorysystem.bean.BindBean">
-        update student
-        set telephone = #{telephone}
-        where id = #{id}
-          and password = #{password}
-    </update>
+<!--    <update id="doBind" parameterType="com.yota8.dormitorysystem.bean.BindBean">-->
+<!--        update student-->
+<!--        set telephone = #{telephone}-->
+<!--        where id = #{id}-->
+<!--          and password = #{password}-->
+<!--    </update>-->
 
-</mapper>
+<!--</mapper>-->
