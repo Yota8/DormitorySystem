@@ -36,10 +36,8 @@ public class StaffPageController {
     public Result getStaffInfoById(@RequestBody Id id) {
         Result studentInfo = staffPageService.getStaffInfoById(id);
         try {
-            log.info("staffinfo:" + studentInfo);
             return studentInfo;
         } catch (Exception e) {
-            e.printStackTrace();
             log.info("返回staffInfo失败,检查后台");
         }
         return null;
@@ -52,7 +50,7 @@ public class StaffPageController {
         if (ids.getId().size() == 1 && 10000 <= ids.getId().get(0) && ids.getId().get(0) <= 99999) {
             return handleReturnService.getDormBuildStudents(ids.getId().get(0));
         } else {
-            // 非宿管Id即为要上传的未归学生Id
+            // 非宿管Id即为待上传的未归学生Id
             return handleReturnService.insertRecord(ids.getId());
         }
     }

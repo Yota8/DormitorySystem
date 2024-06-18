@@ -42,7 +42,6 @@ public class StudentPageController {
         try {
             return studentInfo;
         } catch (Exception e) {
-            e.printStackTrace();
             log.info("返回studentInfo失败,检查后台");
         }
         return null;
